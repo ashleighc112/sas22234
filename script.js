@@ -7,7 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroBtn = document.getElementById("heroQuizBtn");
   const closeBtn = document.getElementById("closeQuizBtn");
   const quizForm = document.getElementById("quizForm");
-    // ===== Saved care plan modal =====
+  const resultsBox = document.getElementById("quizResults");
+  const recServices = document.getElementById("recommendedServices");
+  const recAddOns = document.getElementById("recommendedAddOns");
+  const recSitter = document.getElementById("recommendedSitter");
+
+  // ===== Saved care plan modal =====
   const planModal = document.getElementById("planModal");
   const openPlanBtn = document.getElementById("openPlanBtn");
   const closePlanBtn = document.getElementById("closePlanBtn");
@@ -18,111 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const planServices = document.getElementById("planServices");
   const planAddOns = document.getElementById("planAddOns");
   const planSitter = document.getElementById("planSitter");
-
-  const openPlanModal = () => {
-    if (!planModal) return;
-
-    let plan = null;
-    try {
-      const raw = localStorage.getItem("sasCarePlan");
-      if (raw) plan = JSON.parse(raw);
-    } catch (err) {
-      console.warn("Could not read care plan", err);
-    }
-
-    if (!plan) {
-      if (planContent) planContent.classList.add("hidden");
-      if (noPlanMessage) noPlanMessage.classList.remove("hidden");
-    } else {
-      if (planContent) planContent.classList.remove("hidden");
-      if (noPlanMessage) noPlanMessage.classList.add("hidden");
-
-      const petLabel =
-        plan.petType === "dog" ? "your dog" :
-        plan.petType === "cat" ? "your cat" :
-        "your pet";
-
-      if (planPetSummary) {
-        planPetSummary.textContent =
-          `This plan was created for ${petLabel} with ${plan.energy} energy, ` +
-          `${plan.age} age group, and ${plan.specialCare} special needs.`;
-      }
-
-      if (planServices) {
-        planServices.textContent = plan.serviceText || "Standard visit schedule.";
-      }
-
-      if (planAddOns) {
-        planAddOns.textContent =
-          plan.addOns && plan.addOns.length
-            ? plan.addOns.join(" ")
-            : "No extra add‑ons beyond our standard care and photo updates.";
-      }
-
-      if (planSitter) {
-        planSitter.textContent =
-          plan.sitterName
-            ? `Suggested sitter: ${plan.sitterName}. You can view their full profile on the sitters page.`
-            : "We’ll help you choose a sitter when you’re ready to book.";
-      }
-    }
-
-    planModal.style.display = "flex";
-  };
-
-  const closePlanModal = () => {
-    if (planModal) planModal.style.display = "none";
-  };
-
-  if (openPlanBtn) openPlanBtn.addEventListener("click", openPlanModal);
-  if (closePlanBtn) closePlanBtn.addEventListener("click", closePlanModal);
-
-  if (planModal) {
-    planModal.addEventListener("click", (e) => {
-      if (e.target === planModal) {
-        closePlanModal();
-      }
-    });
-  }
-
-  const resultsBox = document.getElementById("quizResults");
-  const recServices = document.getElementById("recommendedServices");
-  const recAddOns = document.getElementById("recommendedAddOns");
-  const recSitter = document.getElementById("recommendedSitter");
-      const sitterName = sitterNames[sitterId] || "one of our trusted sitters";
-
-      if (recServices)
-        recServices.textContent = `Suggested service: ${serviceText}`;
-      if (recAddOns)
-        recAddOns.textContent =
-          addOns.length > 0
-            ? `Recommended add‑ons: ${addOns.join(" ")}`
-            : "Recommended add‑ons: Standard visit with photo updates.";
-      if (recSitter)
-        recSitter.textContent = `Best sitter match: ${sitterName}. You can learn more about them on the sitters page.`;
-
-      if (resultsBox) resultsBox.classList.remove("hidden");
-
-      // --- Save a more in‑depth plan for later ---
-      const plan = {
-        petType,
-        age,
-        energy,
-        specialCare,
-        service,
-        frequency,
-        serviceText,
-        addOns,
-        sitterId,
-        sitterName,
-        createdAt: new Date().toISOString()
-      };
-
-      try {
-        localStorage.setItem("sasCarePlan", JSON.stringify(plan));
-      } catch (err) {
-        console.warn("Could not save care plan", err);
-      }
 
   // Map sitter IDs to sitter names (must match sitters.html)
   const sitterNames = {
@@ -148,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "sitter-20": "Ben A."
   };
 
-  // ===== Modal open/close with one-time auto-open =====
+  // ===== Quiz modal open/close with one-time auto-open =====
   const openModal = () => {
     if (modal) {
       modal.style.display = "flex";
@@ -177,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (heroBtn) heroBtn.addEventListener("click", openModal);
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
-  // ===== Quiz submit: service, add-ons, sitter matching =====
+  // ===== Quiz submit: service, add-ons, sitter matching + save plan =====
   if (quizForm) {
     quizForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -254,6 +154,94 @@ document.addEventListener("DOMContentLoaded", () => {
         recSitter.textContent = `Best sitter match: ${sitterName}. You can learn more about them on the sitters page.`;
 
       if (resultsBox) resultsBox.classList.remove("hidden");
+
+      // --- Save a more in‑depth plan for later ("My plan") ---
+      const plan = {
+        petType,
+        age,
+        energy,
+        specialCare,
+        service,
+        frequency,
+        serviceText,
+        addOns,
+        sitterId,
+        sitterName,
+        createdAt: new Date().toISOString()
+      };
+
+      try {
+        localStorage.setItem("sasCarePlan", JSON.stringify(plan));
+      } catch (err) {
+        console.warn("Could not save care plan", err);
+      }
+    });
+  }
+
+  // ===== Saved care plan modal logic =====
+  const openPlanModal = () => {
+    if (!planModal) return;
+
+    let plan = null;
+    try {
+      const raw = localStorage.getItem("sasCarePlan");
+      if (raw) plan = JSON.parse(raw);
+    } catch (err) {
+      console.warn("Could not read care plan", err);
+    }
+
+    if (!plan) {
+      if (planContent) planContent.classList.add("hidden");
+      if (noPlanMessage) noPlanMessage.classList.remove("hidden");
+    } else {
+      if (planContent) planContent.classList.remove("hidden");
+      if (noPlanMessage) noPlanMessage.classList.add("hidden");
+
+      const petLabel =
+        plan.petType === "dog" ? "your dog" :
+        plan.petType === "cat" ? "your cat" :
+        "your pet";
+
+      if (planPetSummary) {
+        planPetSummary.textContent =
+          `This plan was created for ${petLabel} with ${plan.energy} energy, ` +
+          `${plan.age} age group, and ${plan.specialCare} special needs.`;
+      }
+
+      if (planServices) {
+        planServices.textContent = plan.serviceText || "Standard visit schedule.";
+      }
+
+      if (planAddOns) {
+        planAddOns.textContent =
+          plan.addOns && plan.addOns.length
+            ? plan.addOns.join(" ")
+            : "No extra add‑ons beyond our standard care and photo updates.";
+      }
+
+      if (planSitter) {
+        planSitter.textContent =
+          plan.sitterName
+            ? `Suggested sitter: ${plan.sitterName}. You can view their full profile on the sitters page.`
+            : "We’ll help you choose a sitter when you’re ready to book.";
+      }
+    }
+
+    planModal.style.display = "flex";
+  };
+
+  const closePlanModal = () => {
+    if (planModal) planModal.style.display = "none";
+  };
+
+  if (openPlanBtn) openPlanBtn.addEventListener("click", openPlanModal);
+  if (closePlanBtn) closePlanBtn.addEventListener("click", closePlanModal);
+
+  if (planModal) {
+    planModal.addEventListener("click", (e) => {
+      if (e.target === planModal) {
+        closePlanModal();
+      }
     });
   }
 
