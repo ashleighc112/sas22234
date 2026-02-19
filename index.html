@@ -132,6 +132,37 @@
   <footer class="main-footer">
     <p>© 2026 Snuggle and Stroll · Dallas, TX</p>
   </footer>
+  <!-- Saved care plan modal -->
+  <div class="modal-backdrop" id="planModal">
+    <div class="modal">
+      <button class="modal-close" id="closePlanBtn">&times;</button>
+      <h2>Your saved care plan</h2>
+      <p class="modal-subtitle" id="planSubtitle">
+        Review the plan we built for your pet based on your last questionnaire.
+      </p>
+
+      <div id="planContent" class="quiz-results">
+        <h3>Care summary</h3>
+        <p id="planPetSummary"></p>
+
+        <h3>Recommended services</h3>
+        <p id="planServices"></p>
+
+        <h3>Recommended add-ons</h3>
+        <p id="planAddOns"></p>
+
+        <h3>Suggested sitter</h3>
+        <p id="planSitter"></p>
+      </div>
+
+      <div id="noPlanMessage" class="quiz-results hidden">
+        <p>
+          We don’t have a saved plan yet. Please complete the questionnaire once,
+          and we’ll store your care plan here for you to revisit.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <!-- Questionnaire modal -->
   <div class="modal-backdrop" id="quizModal">
