@@ -110,18 +110,18 @@ document.addEventListener("DOMContentLoaded", () => {
       let sitterId = "sitter-1";
 
       if (petType === "cat") {
-        if (specialCare === "meds") sitterId = "sitter-16";
-        else if (age === "senior") sitterId = "sitter-13";
-        else if (specialCare === "anxious") sitterId = "sitter-19";
-        else sitterId = "sitter-2";
+        if (specialCare === "meds") sitterId = "Isaac Q.";
+        else if (age === "senior") sitterId = "Grace H.";
+        else if (specialCare === "anxious") sitterId = "Olivia Z.";
+        else sitterId = "Jamie L.";
       } else if (petType === "dog") {
-        if (age === "puppy-kitten" && specialCare === "meds") sitterId = "sitter-20";
-        else if (age === "puppy-kitten") sitterId = "sitter-4";
-        else if (age === "senior" && specialCare === "meds") sitterId = "sitter-11";
-        else if (age === "senior") sitterId = "sitter-3";
-        else if (energy === "high") sitterId = "sitter-6";
-        else if (specialCare === "anxious") sitterId = "sitter-14";
-        else sitterId = "sitter-9";
+        if (age === "puppy-kitten" && specialCare === "meds") sitterId = "Ben A.";
+        else if (age === "puppy-kitten") sitterId = "Chris D.";
+        else if (age === "senior" && specialCare === "meds") sitterId = "Owen T.";
+        else if (age === "senior") sitterId = "Priya S.";
+        else if (energy === "high") sitterId = "Jordan K.";
+        else if (specialCare === "anxious") sitterId = "Sam B.";
+        else sitterId = "Riley C.";
       }
 
       const sitterName = sitterNames[sitterId] || "one of our trusted sitters";
