@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const recAddOns = document.getElementById("recommendedAddOns");
   const recSitter = document.getElementById("recommendedSitter");
 
-  // Map sitter IDs to sitter names (must match sitters.html)
   const sitterNames = {
     "sitter-1": "Alex M.",
     "sitter-2": "Jamie L.",
@@ -38,16 +37,23 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const openModal = () => {
-    if (modal) modal.style.display = "flex";
+    if (modal) {
+      modal.style.display = "flex";
+      // Mark as shown so we don't auto‑open next time
+      localStorage.setItem("sasQuizShown", "true");
+    }
   };
 
   const closeModal = () => {
     if (modal) modal.style.display = "none";
   };
 
-  // Auto-open a couple seconds after landing
+  // Auto-open ONLY the first time a visitor comes
   if (modal) {
-    setTimeout(openModal, 1500);
+    const hasSeenQuiz = localStorage.getItem("sasQuizShown") === "true";
+    if (!hasSeenQuiz) {
+      setTimeout(openModal, 1500);
+    }
 
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
@@ -56,9 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Buttons still open the quiz if user wants it manually
   if (openBtn) openBtn.addEventListener("click", openModal);
   if (heroBtn) heroBtn.addEventListener("click", openModal);
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+  // ... rest of your existing quizForm submit logic, sitter matching, and booking code ...
+});
 
   if (quizForm) {
     quizForm.addEventListener("submit", (e) => {
