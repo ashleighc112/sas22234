@@ -409,6 +409,21 @@ body {
 .hidden {
   display: none;
 }
+.nav-link-button {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-link-button:hover {
+  background: rgba(255, 123, 107, 0.1);
+  color: var(--primary-dark);
+}
 
 /* Responsive */
 
