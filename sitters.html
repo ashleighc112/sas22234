@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snuggle and Stroll | Our Sitters</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-area">
+      <img src="sas-logo.png" alt="Snuggle and Stroll logo" class="logo" />
+      <div>
+        <h1>Snuggle and Stroll</h1>
+        <p>Meet our trusted pet sitters.</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="sitters.html" class="active">Meet the sitters</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="cta-btn" onclick="window.location.href='index.html#how-it-works'">
+      Start questionnaire
+    </button>
+  </header>
+
+  <main class="section">
+    <h2>Our sitter team</h2>
+    <p>
+      All of our sitters are background‑checked, insured, and experienced with a
+      variety of pet personalities and needs. [web:6]
+    </p>
+
+    <div class="filters">
+      <label>
+        Filter by specialty:
+        <select id="sitterFilter">
+          <option value="all">All</option>
+          <option value="puppy">Puppies</option>
+          <option value="senior">Senior pets</option>
+          <option value="highenergy">High‑energy dogs</option>
+          <option value="cats">Cats</option>
+          <option value="meds">Meds & special care</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="cards sitter-grid" id="sitterGrid">
+      <!-- Example sitter card structure; JS also uses IDs in script.js -->
+      <article class="card sitter-card" data-tags="puppy highenergy dogs" id="sitter-1">
+        <h3>Alex M.</h3>
+        <p class="sitter-tagline">High‑energy dog walker & trail explorer.</p>
+        <p class="sitter-meta">Specialties: Adventure walks, basic leash training.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="cats anxious" id="sitter-2">
+        <h3>Jamie L.</h3>
+        <p class="sitter-tagline">Calm companion for shy cats.</p>
+        <p class="sitter-meta">Specialties: Indoor cats, multi‑cat homes.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="senior meds dogs" id="sitter-3">
+        <h3>Priya S.</h3>
+        <p class="sitter-tagline">Gentle care for senior pups.</p>
+        <p class="sitter-meta">Specialties: Mobility support, medication schedules.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="puppy dogs" id="sitter-4">
+        <h3>Chris D.</h3>
+        <p class="sitter-tagline">Puppy socialization and structure.</p>
+        <p class="sitter-meta">Specialties: Crate training, potty breaks.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="cats meds senior" id="sitter-5">
+        <h3>Maria R.</h3>
+        <p class="sitter-tagline">Experienced with senior cats and meds.</p>
+        <p class="sitter-meta">Specialties: Kidney support diets, oral meds.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="highenergy dogs" id="sitter-6">
+        <h3>Jordan K.</h3>
+        <p class="sitter-tagline">Long‑distance walking and running buddy.</p>
+        <p class="sitter-meta">Specialties: High‑energy breeds, cardio walks.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="anxious dogs cats" id="sitter-7">
+        <h3>Sara P.</h3>
+        <p class="sitter-tagline">Patient sitter for anxious pets.</p>
+        <p class="sitter-meta">Specialties: Slow introductions, quiet homes.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="puppy cats" id="sitter-8">
+        <h3>Leo V.</h3>
+        <p class="sitter-tagline">Playtime expert for kittens and pups.</p>
+        <p class="sitter-meta">Specialties: Young pets, enrichment games.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="senior dogs" id="sitter-9">
+        <h3>Riley C.</h3>
+        <p class="sitter-tagline">Comfort‑focused house sitter.</p>
+        <p class="sitter-meta">Specialties: Senior dogs, cozy overnight care.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="cats highenergy" id="sitter-10">
+        <h3>Naomi F.</h3>
+        <p class="sitter-tagline">Interactive play for energetic cats.</p>
+        <p class="sitter-meta">Specialties: Feather toys, laser sessions.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="meds dogs senior" id="sitter-11">
+        <h3>Owen T.</h3>
+        <p class="sitter-tagline">Comfortable with injections and strict meds.</p>
+        <p class="sitter-meta">Specialties: Diabetic pets, complex routines.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="highenergy puppy" id="sitter-12">
+        <h3>Emily W.</h3>
+        <p class="sitter-tagline">Structured walks and training reinforcement.</p>
+        <p class="sitter-meta">Specialties: Young, bouncy dogs.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="cats senior" id="sitter-13">
+        <h3>Grace H.</h3>
+        <p class="sitter-tagline">Quiet, gentle presence for older cats.</p>
+        <p class="sitter-meta">Specialties: Senior cat comfort care.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="dogs anxious" id="sitter-14">
+        <h3>Sam B.</h3>
+        <p class="sitter-tagline">Building confidence one walk at a time.</p>
+        <p class="sitter-meta">Specialties: Reactive & nervous dogs.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="puppy highenergy dogs" id="sitter-15">
+        <h3>Hannah J.</h3>
+        <p class="sitter-tagline">Perfect for playful, social dogs.</p>
+        <p class="sitter-meta">Specialties: Dog park trips, playdates.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="meds cats" id="sitter-16">
+        <h3>Isaac Q.</h3>
+        <p class="sitter-tagline">Cat‑only sitter comfortable with meds.</p>
+        <p class="sitter-meta">Specialties: Pilling, special diets.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="senior dogs cats" id="sitter-17">
+        <h3>Taylor G.</h3>
+        <p class="sitter-tagline">Multi‑pet senior households welcome.</p>
+        <p class="sitter-meta">Specialties: Gentle handling, slow walks.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="highenergy dogs" id="sitter-18">
+        <h3>Kai N.</h3>
+        <p class="sitter-tagline">Morning and evening running partner.</p>
+        <p class="sitter-meta">Specialties: Fit, athletic dogs.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="anxious cats" id="sitter-19">
+        <h3>Olivia Z.</h3>
+        <p class="sitter-tagline">Slow, respectful care for sensitive cats.</p>
+        <p class="sitter-meta">Specialties: Hiding cats, gradual trust‑building.</p>
+      </article>
+
+      <article class="card sitter-card" data-tags="puppy meds dogs" id="sitter-20">
+        <h3>Ben A.</h3>
+        <p class="sitter-tagline">Experienced with young pets and meds.</p>
+        <p class="sitter-meta">Specialties: Post‑surgery care, puppies.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2026 Snuggle and Stroll · Dallas, TX</p>
+  </footer>
+
+  <script>
+    // Simple front-end filter for sitter specialties
+    const filterSelect = document.getElementById('sitterFilter');
+    const sitterCards = document.querySelectorAll('.sitter-card');
+
+    filterSelect.addEventListener('change', () => {
+      const value = filterSelect.value;
+      sitterCards.forEach(card => {
+        if (value === 'all') {
+          card.style.display = '';
+          return;
+        }
+        const tags = card.dataset.tags || '';
+        card.style.display = tags.includes(value) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
