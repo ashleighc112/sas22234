@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snuggle and Stroll | Pet Sitting & Walking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-area">
+      <img src="sas-logo.png" alt="Snuggle and Stroll logo" class="logo" />
+      <div>
+        <h1>Snuggle and Stroll</h1>
+        <p>Your pet’s new favorite sitter in Dallas.</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="sitters.html">Meet the sitters</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cta-btn" id="openQuizBtn">Find your perfect match</button>
+  </header>
+
+  <main>
+    <!-- Hero section with video -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Trusted pet sitting & dog walking in Dallas</h2>
+        <p>
+          Answer a few quick questions and we’ll recommend the best services,
+          add‑ons, and sitter for your dog or cat.
+        </p>
+        <button class="primary-btn" id="heroQuizBtn">Start questionnaire</button>
+      </div>
+      <div class="hero-video">
+        <video src="videofdog.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <h2>Services and add‑ons</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Dog Walking</h3>
+          <p>30–60 minute walks tailored to your dog’s energy level.</p>
+          <ul>
+            <li>Quick potty breaks</li>
+            <li>Neighborhood strolls</li>
+            <li>High‑energy adventure walks</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>In‑Home Pet Sitting</h3>
+          <p>Overnight or drop‑in visits so your pet stays comfy at home.</p>
+          <ul>
+            <li>Meal time and fresh water</li>
+            <li>Litter box or yard clean‑up</li>
+            <li>Playtime and cuddles</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Popular Add‑Ons</h3>
+          <p>Customize each visit to your pet’s needs.</p>
+          <ul>
+            <li>Puppy potty‑training support</li>
+            <li>Senior pet check‑ins & meds</li>
+            <li>Photo & video updates every visit</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="section alt">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Tell us about your pet</h3>
+          <p>Start with a quick questionnaire when you land on the site.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Get tailored options</h3>
+          <p>
+            We recommend services and add‑ons based on pet type, age,
+            energy, and special needs.
+          </p>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Meet your sitter</h3>
+          <p>
+            We match you with one of our 20 vetted sitters and you can learn more on
+            the sitters page.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section id="contact" class="section">
+      <h2>Ready to book?</h2>
+      <p>
+        Use the questionnaire to see your recommended add‑ons and sitter, then
+        reach out with your preferred dates.
+      </p>
+      <form class="contact-form">
+        <div class="form-row">
+          <label for="name">Your name</label>
+          <input type="text" id="name" placeholder="Jane Doe" required />
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-row">
+          <label for="message">Details about your pet and dates</label>
+          <textarea id="message" rows="4" placeholder="Tell us about your pet, dates, and any special requests."></textarea>
+        </div>
+        <button type="submit" class="primary-btn">Send inquiry</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2026 Snuggle and Stroll · Dallas, TX</p>
+  </footer>
+
+  <!-- Questionnaire modal -->
+  <div class="modal-backdrop" id="quizModal">
+    <div class="modal">
+      <button class="modal-close" id="closeQuizBtn">&times;</button>
+      <h2>Pet questionnaire</h2>
+      <p class="modal-subtitle">
+        Answer a few questions so we can suggest the best add‑ons and sitter.
+      </p>
+      <form id="quizForm">
+        <div class="quiz-grid">
+          <div class="quiz-group">
+            <label>What kind of pet do you have?</label>
+            <select name="petType" required>
+              <option value="">Select one</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+            </select>
+          </div>
+
+          <div class="quiz-group">
+            <label>Age range</label>
+            <select name="age">
+              <option value="puppy-kitten">Puppy / kitten (under 1)</option>
+              <option value="adult">Adult</option>
+              <option value="senior">Senior</option>
+            </select>
+          </div>
+
+          <div class="quiz-group">
+            <label>Energy level</label>
+            <select name="energy">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="quiz-group">
+            <label>Any medications or special care?</label>
+            <select name="specialCare">
+              <option value="none">No special care</option>
+              <option value="meds">Takes medication</option>
+              <option value="anxious">Anxious / shy</option>
+              <option value="mobility">Mobility issues</option>
+            </select>
+          </div>
+
+          <div class="quiz-group">
+            <label>Preferred service</label>
+            <select name="service">
+              <option value="walks">Dog walks</option>
+              <option value="dropins">Drop‑in visits</option>
+              <option value="overnight">Overnight sitting</option>
+            </select>
+          </div>
+
+          <div class="quiz-group">
+            <label>How often do you need visits?</label>
+            <select name="frequency">
+              <option value="one-time">One‑time</option>
+              <option value="weekly">A few times per week</option>
+              <option value="daily">Daily</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-btn modal-submit">See my recommendations</button>
+      </form>
+
+      <div id="quizResults" class="quiz-results hidden">
+        <h3>Your recommended options</h3>
+        <p id="recommendedServices"></p>
+        <p id="recommendedAddOns"></p>
+        <p id="recommendedSitter"></p>
+        <a href="sitters.html" class="secondary-link">View sitter profiles</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
