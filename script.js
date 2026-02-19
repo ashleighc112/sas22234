@@ -2,70 +2,63 @@
 // Uses flatpickr for date picking
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== Questionnaire modal =====
-  const modal = document.getElementById("quizModal");
-  const openBtn = document.getElementById("openQuizBtn");
-  const heroBtn = document.getElementById("heroQuizBtn");
-  const closeBtn = document.getElementById("closeQuizBtn");
-  const quizForm = document.getElementById("quizForm");
-  const resultsBox = document.getElementById("quizResults");
-  const recServices = document.getElementById("recommendedServices");
-  const recAddOns = document.getElementById("recommendedAddOns");
-  const recSitter = document.getElementById("recommendedSitter");
+// ===== Questionnaire modal =====
+const modal = document.getElementById("quizModal");
+const openBtn = document.getElementById("openQuizBtn");
+const heroBtn = document.getElementById("heroQuizBtn");
+const closeBtn = document.getElementById("closeQuizBtn");
+const quizForm = document.getElementById("quizForm");
+const resultsBox = document.getElementById("quizResults");
+const recServices = document.getElementById("recommendedServices");
+const recAddOns = document.getElementById("recommendedAddOns");
+const recSitter = document.getElementById("recommendedSitter");
 
-  const sitterNames = {
-    "sitter-1": "Alex M.",
-    "sitter-2": "Jamie L.",
-    "sitter-3": "Priya S.",
-    "sitter-4": "Chris D.",
-    "sitter-5": "Maria R.",
-    "sitter-6": "Jordan K.",
-    "sitter-7": "Sara P.",
-    "sitter-8": "Leo V.",
-    "sitter-9": "Riley C.",
-    "sitter-10": "Naomi F.",
-    "sitter-11": "Owen T.",
-    "sitter-12": "Emily W.",
-    "sitter-13": "Grace H.",
-    "sitter-14": "Sam B.",
-    "sitter-15": "Hannah J.",
-    "sitter-16": "Isaac Q.",
-    "sitter-17": "Taylor G.",
-    "sitter-18": "Kai N.",
-    "sitter-19": "Olivia Z.",
-    "sitter-20": "Ben A."
-  };
+// Map sitter IDs to sitter names (must match sitters.html)
+const sitterNames = {
+"sitter-1": "Alex M.",
+"sitter-2": "Jamie L.",
+"sitter-3": "Priya S.",
+"sitter-4": "Chris D.",
+"sitter-5": "Maria R.",
+"sitter-6": "Jordan K.",
+"sitter-7": "Sara P.",
+"sitter-8": "Leo V.",
+"sitter-9": "Riley C.",
+"sitter-10": "Naomi F.",
+"sitter-11": "Owen T.",
+"sitter-12": "Emily W.",
+"sitter-13": "Grace H.",
+"sitter-14": "Sam B.",
+"sitter-15": "Hannah J.",
+"sitter-16": "Isaac Q.",
+"sitter-17": "Taylor G.",
+"sitter-18": "Kai N.",
+"sitter-19": "Olivia Z.",
+"sitter-20": "Ben A."
+};
 
-  const openModal = () => {
-    if (modal) {
-      modal.style.display = "flex";
-      // Mark as shown so we don't auto‑open next time
-      localStorage.setItem("sasQuizShown", "true");
-    }
-  };
+const openModal = () => {
+if (modal) modal.style.display = "flex";
+};
 
-  const closeModal = () => {
-    if (modal) modal.style.display = "none";
-  };
+const closeModal = () => {
+if (modal) modal.style.display = "none";
+};
 
-  // Auto-open ONLY the first time a visitor comes
-  if (modal) {
-    const hasSeenQuiz = localStorage.getItem("sasQuizShown") === "true";
-    if (!hasSeenQuiz) {
-      setTimeout(openModal, 1500);
-    }
+// Auto-open a couple seconds after landing
+if (modal) {
+setTimeout(openModal, 1500);
 
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-  }
+modal.addEventListener("click", (e) => {
+if (e.target === modal) {
+closeModal();
+}
+});
+}
 
-  // Buttons still open the quiz if user wants it manually
-  if (openBtn) openBtn.addEventListener("click", openModal);
-  if (heroBtn) heroBtn.addEventListener("click", openModal);
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+if (openBtn) openBtn.addEventListener("click", openModal);
+if (heroBtn) heroBtn.addEventListener("click", openModal);
+if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
   // ... rest of your existing quizForm submit logic, sitter matching, and booking code ...
 });
